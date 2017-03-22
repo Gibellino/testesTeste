@@ -49,6 +49,8 @@ public class GestaoConta {
 		System.out.print("\nInsira o id do cliente para alterar o saldo: ");
 		id = read.nextInt();
 		
+		id--;
+		
 		System.out.print("\nInsira a quantidade que deseja alterar: ");
 		money = read.nextFloat();
 		
@@ -60,11 +62,24 @@ public class GestaoConta {
 		}
 	}
 	
-	public void delete(ArrayList<Conta> lista){
+	public void delete(ArrayList<Conta> lista, int add){
 		
 		int id;
 		
 		print(lista,1);
+		
+		System.out.print("\nInsira o id do cliente que deseja eliminar: ");
+		id = read.nextInt();
+		
+		id--;
+		
+		lista.remove(id);
+		
+		for(int i=id; i<lista.size(); i++){
+			lista.get(i).setId(lista.get(i).getId()-1);
+		}
+		
+		add--;
 		
 	}
 	

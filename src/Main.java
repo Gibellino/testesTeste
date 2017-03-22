@@ -24,8 +24,16 @@ public class Main {
 					+ "  4- Diminuir saldo;\n"
 					+ "  5- Eliminar conta;\n"
 					+ "  0- Sair;\n");
+			
 			System.out.printf("Insira a opção que deseja: ");
-			op = read.nextInt();
+			
+			try{
+				op = read.nextInt();
+			}
+			catch(Exception e){
+				op = 7;
+				read.next();
+			}
 			
 			System.out.println();
 			
@@ -44,14 +52,17 @@ public class Main {
 			case 2: new GestaoConta().print(lista,0); break;
 			case 3: new GestaoConta().saldo(lista,true); break;
 			case 4: new GestaoConta().saldo(lista,false); break;
-			case 5: break;
+			case 5: new GestaoConta().delete(lista, add); break;
 			case 0: System.out.println("\nVai Sair!\n"); break;
 			
 			default: System.out.println("\nOpção Inválida!\n");
 			
 			}
 			
+			System.out.println();
+			
 		}while(op != 0);
+		
+		read.close();
 	}
-
 }
